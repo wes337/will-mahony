@@ -43,7 +43,7 @@ export default function Header() {
           Cameo
         </Link>
       </div>
-      <button className="hidden absolute left-[5%] top-[10%] md:flex flex-col uppercase text-center leading-2 scale-x-[0.8] hover:scale-y-[1.1] hover:scale-x-[0.9] -rotate-5 cursor-pointer">
+      <button className="hidden absolute left-[5%] top-[7%] md:flex flex-col uppercase text-center leading-2 scale-x-[0.8] hover:scale-y-[1.1] hover:scale-x-[0.9] -rotate-5 cursor-pointer">
         <div className="text-2xl leading-none">
           Problem
           <br />
