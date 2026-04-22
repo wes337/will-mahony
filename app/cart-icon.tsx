@@ -59,7 +59,7 @@ export default function Cart() {
     };
   }, []);
 
-  if (count === 0 || pathname === "/cart" || !mounted) return null;
+  if (pathname === "/cart" || !mounted) return null;
 
   const positionClass = scrolled
     ? "top-4 right-4 md:top-8 md:right-8"

@@ -50,13 +50,22 @@ export default function Header({ showNav = true }: { showNav?: boolean }) {
           </Link>
         </div>
       )}
-      <button className="hidden absolute left-[5%] top-[8%] md:flex flex-col uppercase text-center leading-2 scale-x-[0.8] hover:scale-y-[1.1] hover:scale-x-[0.9] -rotate-5 cursor-pointer">
-        <div className="text-2xl leading-none">
+      <button
+        className={`absolute left-[2%] top-[6%] md:left-[5%] md:top-[8%] ${showNav ? "flex" : "hidden md:flex"} flex-col uppercase text-center leading-2 scale-x-[0.8] hover:scale-y-[1.1] hover:scale-x-[0.9] -rotate-5 cursor-pointer`}
+      >
+        <div className="hidden md:block text-2xl leading-none">
           Problem
           <br />
           with order?
         </div>
-        <div className="font-bold text-4xl leading-none">Click Here!</div>
+        <div className="md:hidden font-bold text-xl leading-none">
+          Need
+          <br />
+          help?
+        </div>
+        <div className="hidden md:block font-bold text-4xl leading-none">
+          Click Here!
+        </div>
       </button>
     </>
   );
