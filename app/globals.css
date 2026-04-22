@@ -1,8 +1,42 @@
 @import "tailwindcss";
 
+@keyframes flash-blink-outline {
+  0%,
+  100% {
+    outline: 2px solid transparent;
+  }
+  50% {
+    outline: 2px solid #ff0000;
+  }
+}
+
+@keyframes flash-blink-text {
+  0%,
+  100% {
+    color: inherit;
+  }
+  50% {
+    color: #ff0000;
+  }
+}
+
+.flash-blink {
+  outline-offset: 8px;
+  animation: flash-blink-outline 0.3s steps(1, end) 0s 6;
+}
+
+.flash-blink .flash-blink-target {
+  animation: flash-blink-text 0.3s steps(1, end) 0s 6;
+}
+
+html {
+  background: #ffffff;
+}
+
 body {
   background: #ffffff;
   color: #171717;
   font-family: Arial, Helvetica, sans-serif;
   position: relative;
+  overflow-x: hidden;
 }
