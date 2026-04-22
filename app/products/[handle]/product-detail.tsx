@@ -203,7 +203,7 @@ export default function ProductDetail({ product }: { product: ShopifyProduct }) 
                 type="button"
                 disabled={pending !== null}
                 onClick={handleBuyItNow}
-                className="w-full bg-[#ff0000] text-white border-4 border-black font-serif font-bold uppercase text-4xl md:text-5xl py-3 hover:scale-[1.02] cursor-pointer disabled:opacity-60 disabled:cursor-wait disabled:hover:scale-100"
+                className="w-full bg-[#ff0000] text-white font-serif font-bold lowercase text-4xl md:text-5xl py-3 hover:scale-[1.02] cursor-pointer disabled:opacity-60 disabled:cursor-wait disabled:hover:scale-100"
               >
                 Buy It Now
               </button>
@@ -211,7 +211,7 @@ export default function ProductDetail({ product }: { product: ShopifyProduct }) 
                 type="button"
                 disabled={pending !== null}
                 onClick={handleAddToCart}
-                className="w-full bg-[#fffb00] border-4 border-black font-serif font-bold uppercase text-4xl md:text-5xl py-3 hover:scale-[1.02] cursor-pointer disabled:opacity-60 disabled:cursor-wait disabled:hover:scale-100"
+                className="w-full bg-[#fffb00] font-serif font-bold lowercase text-4xl md:text-5xl py-3 hover:scale-[1.02] cursor-pointer disabled:opacity-60 disabled:cursor-wait disabled:hover:scale-100"
               >
                 Add To Cart
               </button>

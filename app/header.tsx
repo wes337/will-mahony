@@ -9,7 +9,7 @@ export default function Header({ showNav = true }: { showNav?: boolean }) {
       </div>
       <div className="relative flex w-max mx-auto">
         <Link
-          className="flex font-serif w-max mx-auto translate-x-[12.5%] select-none hover:scale-[1.05] hover:-rotate-1"
+          className="flex font-serif w-max mx-auto select-none hover:scale-[1.05] hover:-rotate-1"
           href="/"
         >
           <div className="text-8xl md:text-[12rem]">I</div>
@@ -22,7 +22,7 @@ export default function Header({ showNav = true }: { showNav?: boolean }) {
           >
             <path d="M12 21s-7-4.5-9.5-9C1 9 2.5 5 6.5 5c2 0 3.5 1 5.5 3 2-2 3.5-3 5.5-3 4 0 5.5 4 4 7-2.5 4.5-9.5 9-9.5 9z" />
           </svg>
-          <div className="text-8xl md:text-[12rem] scale-x-[0.5] translate-x-[-25%] uppercase">
+          <div className="text-8xl md:text-[12rem] scale-x-[0.5] origin-left uppercase -mr-[1.25em]">
             Love
           </div>
         </Link>

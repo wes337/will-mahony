@@ -11,6 +11,7 @@ import {
   shopifyImageUrl,
   type CartItem,
 } from "../shopify";
+import { getVariantLabel } from "../utils";
 
 function formatPrice(amount: string | number, currencyCode = "USD") {
   const value = typeof amount === "string" ? parseFloat(amount) : amount;
@@ -79,21 +80,16 @@ export default function CartView() {
           Loading…
         </div>
       ) : items.length === 0 ? (
-        <div className="border-4 border-black">
-          <div className="bg-[#ff0000] text-white border-b-4 border-black px-4 md:px-6 py-2 md:py-3 font-serif font-bold uppercase text-2xl md:text-4xl">
-            Your Cart
+        <div className="p-8 md:p-16 flex flex-col items-center gap-6 md:gap-8">
+          <div className="text-xl md:text-2xl text-center leading-none font-normal">
+            Your cart is empty
           </div>
-          <div className="p-8 md:p-16 flex flex-col items-center gap-6 md:gap-8 bg-white">
-            <div className="font-serif uppercase text-3xl md:text-5xl text-center leading-none">
-              Your cart is empty
-            </div>
-            <Link
-              href="/"
-              className="bg-[#fffb00] text-black border-4 border-black font-serif font-bold uppercase text-2xl md:text-4xl px-6 md:px-8 py-2 md:py-3 hover:scale-[1.05]"
-            >
-              Keep Shopping
-            </Link>
-          </div>
+          <Link
+            href="/"
+            className="bg-[#fffb00] text-black font-serif font-bold lowercase text-2xl md:text-4xl px-6 md:px-8 py-2 md:py-3 hover:scale-[1.05]"
+          >
+            Keep Shopping
+          </Link>
         </div>
       ) : (
         <>
@@ -112,24 +108,28 @@ export default function CartView() {
                   } ${isRemoving ? "opacity-40" : ""}`}
                 >
                   {item.image && (
-                    <img
-                      src={shopifyImageUrl(item.image, 300)}
-                      alt={item.title}
-                      loading="lazy"
-                      className="w-20 h-20 md:w-32 md:h-32 object-contain shrink-0"
-                    />
+                    <div className="relative shrink-0">
+                      <img
+                        src={shopifyImageUrl(item.image, 300)}
+                        alt={item.title}
+                        loading="lazy"
+                        className="w-20 h-20 md:w-32 md:h-32 object-contain"
+                      />
+                      <span className="absolute bottom-0 left-0 text-sm md:text-base font-bold text-black">
+                        x{item.quantity}
+                      </span>
+                    </div>
                   )}
                   <div className="flex-1 min-w-0">
                     <div className="font-serif text-2xl md:text-4xl leading-none break-words">
                       {item.title}
                     </div>
-                    <div className="flex gap-3 mt-2 md:mt-1 flex-wrap text-sm md:text-base uppercase font-bold text-black">
-                      {item.variantTitle &&
-                        item.variantTitle !== "Default Title" && (
-                          <span>{item.variantTitle}</span>
-                        )}
-                      <span className="normal-case">x{item.quantity}</span>
-                    </div>
+                    {item.variantTitle &&
+                      item.variantTitle !== "Default Title" && (
+                        <div className="mt-2 md:mt-1 text-sm md:text-base lowercase text-black">
+                          {getVariantLabel(item.variantTitle)}
+                        </div>
+                      )}
                   </div>
                   <div className="font-bold text-xl md:text-2xl whitespace-nowrap">
                     {formatPrice(item.price)}
@@ -161,12 +161,12 @@ export default function CartView() {
 
           {checkoutUrl && (
             <>
-              <div className="text-center text-sm font-bold mt-4 md:mt-6">
+              <div className="text-center text-sm mt-4 md:mt-6">
                 Shipping &amp; taxes calculated at checkout
               </div>
               <a
                 href={checkoutUrl}
-                className="block w-full mt-3 bg-[#fffb00] text-black border-4 border-black font-serif font-bold uppercase text-4xl md:text-6xl px-6 py-4 md:py-6 text-center hover:scale-[1.02]"
+                className="block w-full mt-3 bg-[#fffb00] text-black font-serif font-bold lowercase text-4xl md:text-6xl px-6 py-4 md:py-6 text-center hover:scale-[1.02]"
               >
                 Checkout
               </a>
