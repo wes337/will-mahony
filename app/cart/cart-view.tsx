@@ -8,6 +8,7 @@ import {
   getCart,
   getCartItems,
   removeFromCart,
+  shopifyImageUrl,
   type CartItem,
 } from "../shopify";
 
@@ -112,8 +113,9 @@ export default function CartView() {
                 >
                   {item.image && (
                     <img
-                      src={item.image}
+                      src={shopifyImageUrl(item.image, 300)}
                       alt={item.title}
+                      loading="lazy"
                       className="w-20 h-20 md:w-32 md:h-32 object-contain shrink-0"
                     />
                   )}

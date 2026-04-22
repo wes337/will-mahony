@@ -6,6 +6,7 @@ import {
   addToCart,
   buyItNow,
   getOrCreateCart,
+  shopifyImageUrl,
   type ShopifyProduct,
 } from "../../shopify";
 
@@ -114,7 +115,7 @@ export default function ProductDetail({ product }: { product: ShopifyProduct }) 
         >
           {activeImage && (
             <img
-              src={activeImage}
+              src={shopifyImageUrl(activeImage, 1200)}
               alt={product.title}
               className="w-full aspect-square object-contain [filter:drop-shadow(0_4px_4px_rgba(0,0,0,0.25))]"
             />
@@ -134,8 +135,9 @@ export default function ProductDetail({ product }: { product: ShopifyProduct }) 
                 }`}
               >
                 <img
-                  src={img.url}
+                  src={shopifyImageUrl(img.url, 200)}
                   alt={img.altText || `${product.title} ${i + 1}`}
+                  loading="lazy"
                   className="w-full h-full object-contain"
                 />
               </button>
@@ -235,7 +237,7 @@ export default function ProductDetail({ product }: { product: ShopifyProduct }) 
             <TiTimes className="w-12 h-12" />
           </button>
           <img
-            src={activeImage}
+            src={shopifyImageUrl(activeImage, 2000)}
             alt={product.title}
             onClick={(e) => e.stopPropagation()}
             className="max-w-full max-h-full object-contain"

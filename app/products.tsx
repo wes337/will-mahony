@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { getProducts } from "./shopify";
+import { getProducts, shopifyImageUrl } from "./shopify";
 
 function formatPrice(amount: string, currencyCode: string) {
   return new Intl.NumberFormat("en-US", {
@@ -26,8 +26,9 @@ export default async function Products() {
             <div className="relative">
               {image && (
                 <img
-                  src={image}
+                  src={shopifyImageUrl(image, 600)}
                   alt={product.featuredImage?.altText || product.title}
+                  loading="lazy"
                   className="w-full aspect-square object-contain [filter:drop-shadow(0_4px_4px_rgba(0,0,0,0.25))]"
                 />
               )}

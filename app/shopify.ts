@@ -376,6 +376,17 @@ export interface ShopifyImage {
   altText: string | null;
 }
 
+export function shopifyImageUrl(url: string | null | undefined, width: number) {
+  if (!url) return "";
+  try {
+    const u = new URL(url);
+    u.searchParams.set("width", String(width));
+    return u.toString();
+  } catch {
+    return url;
+  }
+}
+
 export interface ShopifyProductVariant {
   id: string;
   title: string;
